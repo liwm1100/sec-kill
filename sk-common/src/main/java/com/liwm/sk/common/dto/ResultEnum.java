@@ -43,7 +43,6 @@ public enum ResultEnum {
 		this.message = message;
 	}
 
-	@Override
 	public Integer getCode() {
 		return code;
 	}
@@ -52,7 +51,6 @@ public enum ResultEnum {
 		this.code = code;
 	}
 
-	@Override
 	public String getMessage() {
 		return message;
 	}
