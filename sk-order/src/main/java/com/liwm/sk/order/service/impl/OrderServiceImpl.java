@@ -11,7 +11,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Result<Void> createOrder(Long userId, Long productId, Integer count) {
-        //1限流
+        /*//1限流
         // 2. 用户鉴权 & 防重复提交
         String repeatKey = "seckill:user:" + userId + ":" + productId;
         if (!redisTemplate.opsForValue().setIfAbsent(repeatKey, "1", 5, TimeUnit.SECONDS)) {
@@ -23,6 +23,7 @@ public class OrderServiceImpl implements OrderService {
         }
         // 4. 生成订单号并发送MQ
         String orderId = OrderIdGenerator.generate();
-        orderProducer.sendSeckillOrder(new SeckillOrderEvent(orderId, productId, userId));
+        orderProducer.sendSeckillOrder(new SeckillOrderEvent(orderId, productId, userId));*/
+        return null;
     }
 }
