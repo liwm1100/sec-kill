@@ -4,13 +4,13 @@
   <resultMap id="BaseResultMap" type="com.liwm.sk.account.model.SkAccount">
     <!--@mbg.generated-->
     <!--@Table sk_account-->
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="money" jdbcType="DECIMAL" property="money" />
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="money" jdbcType="INTEGER" property="money" />
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
-    id, `name`, money
+    id, user_id, money
   </sql>
 
   <select id="getBalance" resultType="java.lang.Integer">
@@ -18,6 +18,6 @@
     </select>
 
   <update id="reduceBalance">
-    UPDATE account SET money = money - #{price} WHERE id = #{userId} AND money >= ${price}
+    UPDATE account SET money = money - #{price} WHERE id = #{userId} AND money &gt;= ${price}
   </update>
 </mapper>
