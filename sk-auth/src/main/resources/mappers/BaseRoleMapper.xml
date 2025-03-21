@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liwm.sk.auth.mapper.BaseRoleMapper">
+  <resultMap id="BaseResultMap" type="com.liwm.sk.auth.model.BaseRole">
+    <!--@mbg.generated-->
+    <!--@Table base_role-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="type_" jdbcType="CHAR" property="type" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+    <result column="state" jdbcType="BIT" property="state" />
+    <result column="created_by" jdbcType="BIGINT" property="createdBy" />
+    <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
+    <result column="updated_by" jdbcType="BIGINT" property="updatedBy" />
+    <result column="updated_time" jdbcType="TIMESTAMP" property="updatedTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, type_, `name`, code, remarks, `state`, created_by, created_time, updated_by, 
+    updated_time
+  </sql>
+</mapper>

@@ -1,0 +1,53 @@
+server:
+  # 端口
+  port: 8081
+
+
+
+spring:
+  application:
+    name: sk-auth
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+      #username:
+      #password:
+      config:
+        server-addr: ${spring.cloud.nacos.server-addr}
+        context-path: /nacos
+        group: DEFAULT_GROUP
+        file-extension: yaml
+      discovery:
+        server-addr: ${spring.cloud.nacos.server-addr:}
+        group: DEFAULT_GROUP
+  config:
+    import:
+      - optional:nacos:sk-auth.yaml
+
+  datasource:
+    name: druidDataSource
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      url: jdbc:mysql://localhost:3306/base?useUnicode=true&characterEncoding=utf8
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: root
+      password: 123456
+seata:
+  application-id: ${spring.application.name}
+  #事务分组配置（在v1.5之后默认值为default_tx_group）
+  tx-service-group: ${spring.application.name}-group
+  #指定事务分组至集群映射关系（等号右侧的集群名需要与Seata-server注册到Nacos的cluster保持一致）
+  service:
+    vgroup-mapping:
+      sk-account-group: default
+    grouplist:
+      default: seata-server:8091
+  registry:
+    type: nacos
+    nacos:
+      server-addr: localhost:8848
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
