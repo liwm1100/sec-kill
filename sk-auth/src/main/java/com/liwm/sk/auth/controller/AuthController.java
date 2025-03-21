@@ -4,9 +4,12 @@ import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.liwm.sk.auth.dto.ApiDTO;
+import com.liwm.sk.auth.dto.ResourcesDTO;
 import com.liwm.sk.auth.dto.UserDTO;
 import com.liwm.sk.auth.model.*;
 import com.liwm.sk.auth.service.*;
+import com.liwm.sk.auth.vo.ResourcesVo;
 import com.liwm.sk.common.dto.Result;
 import com.liwm.sk.common.utils.JsonBeanUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +38,8 @@ public class AuthController {
     private BaseRoleResourceRelService baseRoleResourceRelService;
     @Autowired
     private BaseResourceService baseResourceService;
+    @Autowired
+    private BaseApiService baseApiService;
 
     @GetMapping("/permission-list")
     public Result<List<String>> getPermissionList(Long userId) {
@@ -73,5 +78,16 @@ public class AuthController {
     public Result<UserDTO> userInfo(Long userId) {
         BaseUser user = baseUserService.getById(userId);
         return Result.success(JsonBeanUtil.copyObject(user, UserDTO.class));
+    }
+
+    @GetMapping("/listApi")
+    public Result<List<ApiDTO>> listApi(int authorizeType) {
+        List<BaseApi> apis = baseApiService.list(Wrappers.lambdaQuery(BaseApi.class).eq(BaseApi::getAuthorizeType,authorizeType));
+        return Result.success(JsonBeanUtil.copyList(apis, ApiDTO.class));
+    }
+    @GetMapping("/listAllResourceApi")
+    public Result<List<ResourcesDTO>> listAllResourceApi() {
+        List<ResourcesVo> resourcesVos = baseResourceService.listAllResourceApi();
+        return Result.success(JsonBeanUtil.copyList(resourcesVos, ResourcesDTO.class));
     }
 }

@@ -23,4 +23,11 @@
     id, application_id, code, `name`, resource_type, parent_id, `describe`, `state`, 
     sort_value, created_by, created_time, updated_by, updated_time
   </sql>
+
+  <select id="listAllResourceApi" resultType="com.liwm.sk.auth.vo.ResourcesVo">
+    select
+      c.uri,c.request_method,a.`code`
+    from base_resource a,base_resource_api b,base_api c
+    where a.id=b.resource_id and b.api_id=c.id
+  </select>
 </mapper>
