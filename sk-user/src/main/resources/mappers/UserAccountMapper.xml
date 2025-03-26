@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liwm.sk.user.mapper.UserAccountMapper">
+  <resultMap id="BaseResultMap" type="com.liwm.sk.user.model.UserAccount">
+    <!--@mbg.generated-->
+    <!--@Table user_account-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="money" jdbcType="DECIMAL" property="money" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, user_id, money
+  </sql>
+
+
+  <update id="reduceBalance">
+    UPDATE account SET money = money - #{price} WHERE id = #{userId} AND money &gt;= ${price}
+  </update>
+</mapper>
