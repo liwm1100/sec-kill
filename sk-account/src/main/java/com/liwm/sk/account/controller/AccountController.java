@@ -34,18 +34,13 @@ public class AccountController {
 	private AccountService accountService;
 
 	@PostMapping("/reduce-balance")
-	public Result<?> reduceBalance(@RequestBody AccountDTO accountDTO) {
-		try {
-			accountService.reduceBalance(accountDTO.getUserId(), accountDTO.getPrice());
-		}
-		catch (BusinessException e) {
-			return Result.fail(e.getMessage());
-		}
-		return Result.success("");
+	public Result<Boolean> reduceBalance(@RequestBody AccountDTO accountDTO) {
+		accountService.reduceBalance(accountDTO.getUserId(), accountDTO.getMoney());
+		return Result.success(true);
 	}
 
 	@GetMapping("/")
-	public Result<?> getRemainAccount(String userId) {
+	public Result<Integer> getRemainAccount(String userId) {
 		return accountService.getRemainAccount(userId);
 	}
 

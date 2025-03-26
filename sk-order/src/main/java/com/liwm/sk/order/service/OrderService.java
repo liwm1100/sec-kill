@@ -1,7 +1,8 @@
 package com.liwm.sk.order.service;
 
-import com.liwm.sk.common.dto.Result;
+import com.liwm.sk.order.mq.SeckillOrderEvent;
 
 public interface OrderService {
-    Result<Void> createOrder(Long userId, Long productId, Integer count);
+
+    void payOrder(SeckillOrderEvent event);
 }

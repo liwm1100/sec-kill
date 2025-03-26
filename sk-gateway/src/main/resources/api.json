@@ -1,0 +1,10 @@
+[
+  {
+    "apiName": "order-create-api",
+    "predicateItems": [
+      {
+        "pattern": "/create/create"
+      }
+    ]
+  }
+]

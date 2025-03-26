@@ -42,7 +42,7 @@ public class AccountServiceImpl implements AccountService {
 
 	@Override
 	@Transactional
-	public void reduceBalance(String userId, Integer price) throws BusinessException {
+	public void reduceBalance(String userId, Integer price) {
 		logger.info("[reduceBalance] currenet XID: {}", RootContext.getXID());
 
 		checkBalance(userId, price);
@@ -50,15 +50,15 @@ public class AccountServiceImpl implements AccountService {
 		Timestamp updateTime = new Timestamp(System.currentTimeMillis());
 		int updateCount = skAccountMapper.reduceBalance(userId, price, updateTime);
 		if (updateCount == 0) {
-			throw new BusinessException("reduce balance failed");
+			throw new BusinessException("扣钱失败！");
 		}
 	}
 
 	@Override
-	public Result<?> getRemainAccount(String userId) {
+	public Result<Integer> getRemainAccount(String userId) {
 		Integer balance = skAccountMapper.getBalance(userId);
 		if (balance == null) {
-			return Result.fail("wrong userId,please check the userId");
+			return Result.fail("未查询到用户信息");
 		}
 		return Result.success(balance);
 	}
@@ -66,7 +66,7 @@ public class AccountServiceImpl implements AccountService {
 	private void checkBalance(String userId, Integer price) throws BusinessException {
 		Integer balance = skAccountMapper.getBalance(userId);
 		if (balance < price) {
-			throw new BusinessException("no enough balance");
+			throw new BusinessException("金额不足");
 		}
 	}
 

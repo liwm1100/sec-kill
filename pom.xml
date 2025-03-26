@@ -15,6 +15,7 @@
         <module>sk-account</module>
         <module>sk-auth</module>
         <module>sk-order</module>
+        <module>sk-product</module>
     </modules>
 
     <properties>

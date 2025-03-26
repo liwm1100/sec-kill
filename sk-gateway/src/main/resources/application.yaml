@@ -29,6 +29,25 @@ spring:
         predicates:
           - Path=/example/**
 
+    #sentinel配置
+    sentinel:
+      datasource.ds2.file:
+        file: "classpath: gateway.json"
+        ruleType: gw-flow
+      datasource.ds1.file:
+        file: "classpath: api.json"
+        ruleType: gw-api-group
+      transport:
+        dashboard: localhost:8080
+      filter:
+        enabled: true
+      scg.fallback:
+        mode: response
+        response-status: 444
+        response-body: 1234
+      scg:
+        order: -100
+
 
 ############## Sa-Token 配置 (文档: https://sa-token.cc) ##############
 sa-token:
@@ -46,3 +65,5 @@ sa-token:
   token-style: uuid
   # 是否输出操作日志
   is-log: true
+
+management.endpoints.web.exposure.include: "*"
