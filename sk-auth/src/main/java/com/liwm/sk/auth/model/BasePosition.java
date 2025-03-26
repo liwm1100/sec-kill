@@ -35,7 +35,7 @@ public class BasePosition {
      * 状态;0-禁用 1-启用
      */
     @TableField(value = "`state`")
-    private Boolean state;
+    private Integer state;
 
     /**
      * 备注

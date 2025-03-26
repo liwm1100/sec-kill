@@ -2,7 +2,7 @@ server:
   port: 8081
 spring:
   application:
-    name: sk-account
+    name: sk-order
   cloud:
     nacos:
       server-addr: localhost:8848
@@ -18,7 +18,7 @@ spring:
         group: DEFAULT_GROUP
   config:
     import:
-      - optional:nacos:sk-account.yaml
+      - optional:nacos:sk-order.yaml
   datasource:
     name: druidDataSource
     type: com.alibaba.druid.pool.DruidDataSource

@@ -1,10 +1,8 @@
 server:
-  # 端口
   port: 8081
-
 spring:
   application:
-    name: sk-auth
+    name: sk-user
   cloud:
     nacos:
       server-addr: localhost:8848
@@ -20,13 +18,12 @@ spring:
         group: DEFAULT_GROUP
   config:
     import:
-      - optional:nacos:sk-auth.yaml
-
+      - optional:nacos:sk-user.yaml
   datasource:
     name: druidDataSource
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
-      url: jdbc:mysql://localhost:3306/auth?useUnicode=true&characterEncoding=utf8
+      url: jdbc:mysql://localhost:3306/user?useUnicode=true&characterEncoding=utf8
       driver-class-name: com.mysql.cj.jdbc.Driver
       username: root
       password: 123456
@@ -44,7 +41,6 @@ seata:
     type: nacos
     nacos:
       server-addr: localhost:8848
-
 mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true

@@ -12,7 +12,7 @@
     <result column="tree_grade" jdbcType="INTEGER" property="treeGrade" />
     <result column="tree_path" jdbcType="VARCHAR" property="treePath" />
     <result column="sort_value" jdbcType="INTEGER" property="sortValue" />
-    <result column="state" jdbcType="BIT" property="state" />
+    <result column="state" jdbcType="INTEGER" property="state" />
     <result column="remarks" jdbcType="VARCHAR" property="remarks" />
     <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
     <result column="created_by" jdbcType="BIGINT" property="createdBy" />

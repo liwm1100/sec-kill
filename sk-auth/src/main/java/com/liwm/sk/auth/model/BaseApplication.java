@@ -77,13 +77,13 @@ public class BaseApplication {
      * 是否公共应用;0-否 1-是
      */
     @TableField(value = "is_general")
-    private Boolean isGeneral;
+    private Integer isGeneral;
 
     /**
      * 是否可见;0-否 1-是
      */
     @TableField(value = "is_visible")
-    private Boolean isVisible;
+    private Integer isVisible;
 
     /**
      * 排序

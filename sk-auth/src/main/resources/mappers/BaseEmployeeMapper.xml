@@ -5,11 +5,11 @@
     <!--@mbg.generated-->
     <!--@Table base_employee-->
     <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="is_default" jdbcType="BIT" property="isDefault" />
+    <result column="is_default" jdbcType="INTEGER" property="isDefault" />
     <result column="position_id" jdbcType="BIGINT" property="positionId" />
     <result column="user_id" jdbcType="BIGINT" property="userId" />
     <result column="real_name" jdbcType="VARCHAR" property="realName" />
-    <result column="state" jdbcType="BIT" property="state" />
+    <result column="state" jdbcType="INTEGER" property="state" />
     <result column="created_by" jdbcType="BIGINT" property="createdBy" />
     <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
     <result column="updated_by" jdbcType="BIGINT" property="updatedBy" />

@@ -23,7 +23,7 @@ public class BaseEmployee {
      * 是否默认员工;[0-否 1-是]
      */
     @TableField(value = "is_default")
-    private Boolean isDefault;
+    private Integer isDefault;
 
     /**
      * 所属岗位
@@ -47,7 +47,7 @@ public class BaseEmployee {
      * 状态;[0-禁用 1-启用]
      */
     @TableField(value = "`state`")
-    private Boolean state;
+    private Integer state;
 
     /**
      * 创建人

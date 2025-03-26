@@ -11,7 +11,7 @@
     <result column="resource_type" jdbcType="VARCHAR" property="resourceType" />
     <result column="parent_id" jdbcType="BIGINT" property="parentId" />
     <result column="describe" jdbcType="VARCHAR" property="describe" />
-    <result column="state" jdbcType="BIT" property="state" />
+    <result column="state" jdbcType="INTEGER" property="state" />
     <result column="sort_value" jdbcType="INTEGER" property="sortValue" />
     <result column="created_by" jdbcType="BIGINT" property="createdBy" />
     <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />

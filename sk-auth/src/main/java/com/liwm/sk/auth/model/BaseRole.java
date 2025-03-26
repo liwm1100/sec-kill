@@ -47,7 +47,7 @@ public class BaseRole {
      * 状态
      */
     @TableField(value = "`state`")
-    private Boolean state;
+    private Integer state;
 
     /**
      * 创建人

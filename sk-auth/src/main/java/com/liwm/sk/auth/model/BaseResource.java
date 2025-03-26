@@ -59,7 +59,7 @@ public class BaseResource {
      * 状态;[0-禁用 1-启用]
      */
     @TableField(value = "`state`")
-    private Boolean state;
+    private Integer state;
 
     /**
      * 排序;默认升序

@@ -10,12 +10,11 @@
     <packaging>pom</packaging>
     <modules>
         <module>sk-common</module>
-        <module>sec-kill-api</module>
         <module>sk-gateway</module>
-        <module>sk-account</module>
+        <module>sk-user</module>
         <module>sk-auth</module>
         <module>sk-order</module>
-        <module>sk-product</module>
+        <module>sk-goods</module>
     </modules>
 
     <properties>

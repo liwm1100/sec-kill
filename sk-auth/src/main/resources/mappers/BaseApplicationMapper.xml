@@ -14,8 +14,8 @@
     <result column="introduce" jdbcType="VARCHAR" property="introduce" />
     <result column="remark" jdbcType="VARCHAR" property="remark" />
     <result column="url" jdbcType="VARCHAR" property="url" />
-    <result column="is_general" jdbcType="BIT" property="isGeneral" />
-    <result column="is_visible" jdbcType="BIT" property="isVisible" />
+    <result column="is_general" jdbcType="INTEGER" property="isGeneral" />
+    <result column="is_visible" jdbcType="INTEGER" property="isVisible" />
     <result column="sort_value" jdbcType="INTEGER" property="sortValue" />
     <result column="created_by" jdbcType="BIGINT" property="createdBy" />
     <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
