@@ -13,18 +13,18 @@ import org.springframework.context.annotation.Configuration;
 public class RabbitMQConfig {
 
 
-    public static final String exchange = "sekKillExchange";
-    public static final String queue = "seckill.order.queue";
-    public static final String key = "seckill.order";
+    public static final String exchange = "sk.exchange";
+    public static final String queue = "sk.order.queue";
+    public static final String key = "sk.order";
 
     @Bean
     public DirectExchange seckillExchange() {
-        return ExchangeBuilder.directExchange("sekKillExchange").durable(true).build();
+        return ExchangeBuilder.directExchange(exchange).durable(true).build();
     }
 
     @Bean
     public Queue seckillQueue() {
-        return QueueBuilder.durable("seckill.order.queue")
+        return QueueBuilder.durable(queue)
                 .withArgument("x-dead-letter-exchange", "dlx.exchange")
                 .withArgument("x-dead-letter-routing-key", "dlx.route")
                 .build();
@@ -33,7 +33,7 @@ public class RabbitMQConfig {
     @Bean
     public Binding seckillBinding(@Qualifier("seckillQueue") Queue queue,
                                   @Qualifier("seckillExchange") DirectExchange exchange) {
-        return BindingBuilder.bind(queue).to(exchange).with("seckill.order");
+        return BindingBuilder.bind(queue).to(exchange).with(key);
     }
 
     @Bean

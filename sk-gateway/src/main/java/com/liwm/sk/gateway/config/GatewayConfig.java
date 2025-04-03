@@ -46,8 +46,8 @@ public class GatewayConfig {
     }
 
     //注册 sentinelGatewayfilter
-    @Bean
-    @Order(Ordered.HIGHEST_PRECEDENCE)
+    //@Bean
+    //@Order(Ordered.HIGHEST_PRECEDENCE)
     public GlobalFilter sentinelGatewayFilter() {
         return new SentinelGatewayFilter();
     }

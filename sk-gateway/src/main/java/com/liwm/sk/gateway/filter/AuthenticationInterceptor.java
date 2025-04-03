@@ -113,32 +113,39 @@ public class AuthenticationInterceptor implements WebFilter, Ordered {
             String requestMethod = arrays[1];
             SaRouter.match(uri).matchMethod(requestMethod).check(r -> StpUtil.checkPermissionOr(auth.toArray(new String[]{})));
         });
-        return null;
+        return chain.filter(exchange).contextWrite(ctx -> {
+            ctx = ctx.put(SaReactorHolder.CONTEXT_KEY, exchange);
+            return ctx;
+        }).doFinally(r -> {
+            SaReactorSyncHolder.clearContext();
+        });
     }
 
     private Set<String> baseIgnoreUrls() {
         LinkedHashSet<String> baseIgnoreUrls = new LinkedHashSet<>();
         Collections.addAll(baseIgnoreUrls,
-                "/{p:[a-zA-Z0-9]+}.css",
-                "/{p:[a-zA-Z0-9]+}.js",
-                "/{p:[a-zA-Z0-9]+}.html",
-                "/{p:[a-zA-Z0-9]+}.ico",
-                "/{p:[a-zA-Z0-9]+}.jpg",
-                "/{p:[a-zA-Z0-9]+}.jpeg",
-                "/{p:[a-zA-Z0-9]+}.png",
-                "/{p:[a-zA-Z0-9]+}.gif",
+                "/user/login",
+                    "/user/register",
+                    "/{p:[a-zA-Z0-9]+}.css",
+                    "/{p:[a-zA-Z0-9]+}.js",
+                    "/{p:[a-zA-Z0-9]+}.html",
+                    "/{p:[a-zA-Z0-9]+}.ico",
+                    "/{p:[a-zA-Z0-9]+}.jpg",
+                    "/{p:[a-zA-Z0-9]+}.jpeg",
+                    "/{p:[a-zA-Z0-9]+}.png",
+                    "/{p:[a-zA-Z0-9]+}.gif",
 
-                "/swagger-ui.html**",
-                "/doc.html**",
-                "/favicon.ico",
-                "/v3/**",
-                "/webjars/**",
-                "/v2/**",
-                "/swagger-resources/**",
-                "/actuator/**",
-                "/static/**",
-                "/error",
-                "/druid/**"
+                    "/swagger-ui.html**",
+                    "/doc.html**",
+                    "/favicon.ico",
+                    "/v3/**",
+                    "/webjars/**",
+                    "/v2/**",
+                    "/swagger-resources/**",
+                    "/actuator/**",
+                    "/static/**",
+                    "/error",
+                    "/druid/**"
         );
         return baseIgnoreUrls;
     }

@@ -20,15 +20,18 @@ spring:
         group: DEFAULT_GROUP
     gateway:
       routes:
+      - id: sk-user
+        uri: lb://sk-user
+        predicates:
+        - Path=/user/**
+      - id: sk-order
+        uri: lb://sk-order
+        predicates:
+          - Path=/order/**
       - id: sk-auth
         uri: lb://sk-auth
         predicates:
-        - Path=/auth/**
-      - id: demo2-service
-        uri: https://example.org
-        predicates:
-          - Path=/example/**
-
+          - Path=/auth/**
     #sentinel配置
     sentinel:
       datasource.ds2.file:

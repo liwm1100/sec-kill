@@ -27,6 +27,11 @@ spring:
       driver-class-name: com.mysql.cj.jdbc.Driver
       username: root
       password: 123456
+  rabbitmq:
+    host: rabbitmq.stage.ikongjian.com
+    port: 5673
+    username: stage
+    password: ikjstage
 seata:
   application-id: ${spring.application.name}
   #事务分组配置（在v1.5之后默认值为default_tx_group）
